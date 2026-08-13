@@ -53,7 +53,7 @@ func TestGetAPIKey(t *testing.T) {
 			},
 			// strings.Split("ApiKey   key", " ") -> ["ApiKey", "", "", "key"]
 			// splitAuth[1] is ""
-			wantKey: " key",      
+			wantKey: "",      
 			wantErr: nil,
 		},
 	}

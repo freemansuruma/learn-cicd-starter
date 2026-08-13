@@ -3,16 +3,16 @@ package auth
 import (
 	"net/http"
 	//"strings"
-	"testing"
 	"errors"
 	"reflect"
+	"testing"
 )
 
 func TestGetAPIKey(t *testing.T) {
 	tests := map[string]struct {
-		headers  http.Header
-		wantKey  string
-		wantErr  error
+		headers http.Header
+		wantKey string
+		wantErr error
 	}{
 		"valid api key header": {
 			headers: http.Header{
@@ -44,8 +44,8 @@ func TestGetAPIKey(t *testing.T) {
 			headers: http.Header{
 				"Authorization": []string{"ApiKey "},
 			},
-			wantKey: "",      // The function returns an empty string, no error
-			wantErr: nil,     // No error is returned currently
+			wantKey: "",  // The function returns an empty string, no error
+			wantErr: nil, // No error is returned currently
 		},
 		"valid with multiple spaces": {
 			headers: http.Header{
@@ -53,7 +53,7 @@ func TestGetAPIKey(t *testing.T) {
 			},
 			// strings.Split("ApiKey   key", " ") -> ["ApiKey", "", "", "key"]
 			// splitAuth[1] is ""
-			wantKey: "",      
+			wantKey: "",
 			wantErr: nil,
 		},
 	}
